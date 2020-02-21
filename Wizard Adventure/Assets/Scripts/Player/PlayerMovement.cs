@@ -12,7 +12,6 @@ public class PlayerMovement : MonoBehaviour
 	private Rigidbody2D _playerRb;
 	private Vector2 _movement;
 	private SpriteRenderer _playerSprite;
-	private Transform _playerTransform;
 
 	private float _dash;
 	private float _dashTime = 0.1f;
@@ -21,12 +20,10 @@ public class PlayerMovement : MonoBehaviour
 	{
 		if(_movement.x > 0)
 		{
-			_playerTransform.localRotation = Quaternion.Euler(0, 0, 0);
 			_playerSprite.sprite = playerState[0];
 		}
 		else if(_movement.x < 0)
 		{
-			_playerTransform.localRotation = Quaternion.Euler(0, 180, 0);
 			_playerSprite.sprite = playerState[0];
 		}
 		else if(_movement.y > 0)
@@ -57,7 +54,6 @@ public class PlayerMovement : MonoBehaviour
 
 	private void Start()
 	{
-		_playerTransform = GetComponent<Transform>();
 		_playerSprite = GetComponent<SpriteRenderer>();
 		_playerRb = GetComponent<Rigidbody2D>();
 	}
