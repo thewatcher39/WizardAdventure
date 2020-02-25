@@ -6,7 +6,7 @@ public class Bullet : MonoBehaviour
 {
 
 	public GameObject explosionEffectPrefab;
-	
+	public bool enemy;
 
 	private void SpawnExplosionParticles(GameObject ef)
 	{
@@ -16,10 +16,21 @@ public class Bullet : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D other)
 	{
-		if(other.gameObject.tag != "MainHero" && other.gameObject.tag != "blast")
+		if(enemy)
 		{
-			SpawnExplosionParticles(explosionEffectPrefab);
-			Destroy(this.gameObject);
+			if(other.gameObject.tag != "enemy")
+			{
+				SpawnExplosionParticles(explosionEffectPrefab);
+				Destroy(this.gameObject);
+			}
+		}
+		else
+		{
+			if(other.gameObject.tag != "MainHero" && other.gameObject.tag != "blast")
+			{
+				SpawnExplosionParticles(explosionEffectPrefab);
+				Destroy(this.gameObject);
+			}
 		}
 	}
 }
