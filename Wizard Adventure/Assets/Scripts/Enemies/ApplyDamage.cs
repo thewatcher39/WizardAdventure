@@ -5,12 +5,14 @@ using UnityEngine;
 public class ApplyDamage : MonoBehaviour
 {
 	[SerializeField] private int _healthPoint = 0;
+	[SerializeField] private int _coinPerKill = 0;
 
 	private void TakeDamage()
 	{
 		_healthPoint--;
 		if(_healthPoint == 0)
 		{
+			CoinManager.Instance.coins += _coinPerKill;
 			Destroy(this.gameObject);
 		}
 	}

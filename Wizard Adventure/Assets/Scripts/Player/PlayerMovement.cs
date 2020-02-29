@@ -45,10 +45,14 @@ public class PlayerMovement : MonoBehaviour
 	{
 		if(Input.GetKeyDown(KeyCode.Space))
 		{
-			if(_dash == 0)
+			if(PlayerShootingSystem.mana >= 1)
 			{
-				StartCoroutine("CanDash");
-			} 
+				if(_dash == 0)
+				{
+					StartCoroutine("CanDash");
+					PlayerShootingSystem.mana--;
+				} 
+			}
 		}
 	}
 
