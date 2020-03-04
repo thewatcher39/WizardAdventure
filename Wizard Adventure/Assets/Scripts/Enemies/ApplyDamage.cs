@@ -12,7 +12,7 @@ public class ApplyDamage : MonoBehaviour
 		_healthPoint--;
 		if(_healthPoint == 0)
 		{
-			CoinManager.Instance.coins += _coinPerKill;
+			GameManager.Instance.coins += _coinPerKill;
 			Destroy(this.gameObject);
 		}
 	}

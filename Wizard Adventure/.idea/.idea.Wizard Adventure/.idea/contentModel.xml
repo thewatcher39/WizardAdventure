@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\HP\.Rider2019.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\HP\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_Wizard Adventure.1979247993.00" t="ExcludeRecursive" />
+    <e p="D:\WizardAdventure\Wizard Adventure" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Scripts" t="Include">
+          <e p="Bullet.cs" t="Include" />
+          <e p="CameraMove.cs" t="Include" />
+          <e p="CoinManager.cs" t="Include" />
+          <e p="Destroyer.cs" t="Include" />
+          <e p="DieAnimation.cs" t="Include" />
+          <e p="Enemies" t="Include">
+            <e p="ApplyDamage.cs" t="Include" />
+            <e p="BlazerBehavior.cs" t="Include" />
+            <e p="EnemyWalkingBehavior.cs" t="Include" />
+            <e p="EnemyWizardBehavior.cs" t="Include" />
+          </e>
+          <e p="Player" t="Include">
+            <e p="PlayerDeath.cs" t="Include" />
+            <e p="PlayerMovement.cs" t="Include" />
+            <e p="PlayerShootingSystem.cs" t="Include" />
+          </e>
+          <e p="Singleton.cs" t="Include" />
+        </e>
+      </e>
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+      <e p="Wizard Adventure.sln" t="IncludeFlat" />
+    </e>
+  </component>
+</project>

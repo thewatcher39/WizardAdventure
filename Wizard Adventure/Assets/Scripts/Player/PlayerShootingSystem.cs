@@ -1,14 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerShootingSystem : MonoBehaviour
 {
-	public static float mana = 10;
-
-	public Slider manaPool;
-	public GameObject bulletPrefab;
+	public GameObject[] bulletPrefab;
 	public Rigidbody2D firePointRb;
 	public Transform firePoint;
 
@@ -25,13 +21,13 @@ public class PlayerShootingSystem : MonoBehaviour
 	{
 		if(Input.GetKeyDown(KeyCode.Mouse0) && _canShoot)
 		{
-			if(mana >= 1)
+			if(GameManager.Instance.mana >= 1)
 			{
 				StartCoroutine("coolDown");
-				_bullet = Instantiate(bulletPrefab, firePointRb.position, firePoint.rotation);
+				_bullet = Instantiate(bulletPrefab[GameManager.Instance.ammoID], firePointRb.position, firePoint.rotation);
 				_bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.up * _shootPower, ForceMode2D.Impulse);
 				_canShoot = false;
-				mana--;
+				GameManager.Instance.mana--;
 			}
 		}
 	}
@@ -52,9 +48,6 @@ public class PlayerShootingSystem : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		manaPool.value = mana;
-		if(mana <= 10)
-			mana += 0.02f;
 		SetFirePos();
 		Shoot();
 	}

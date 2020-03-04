@@ -40,17 +40,18 @@ public class PlayerMovement : MonoBehaviour
 		_movement += _movement.normalized * _dash;
 		_playerRb.velocity = _movement * _moveSpeed;
 	}
+	
 
 	private void Dash()
 	{
 		if(Input.GetKeyDown(KeyCode.Space))
 		{
-			if(PlayerShootingSystem.mana >= 1)
+			if(GameManager.Instance.mana >= 1)
 			{
 				if(_dash == 0)
 				{
 					StartCoroutine("CanDash");
-					PlayerShootingSystem.mana--;
+					GameManager.Instance.mana--;
 				} 
 			}
 		}
