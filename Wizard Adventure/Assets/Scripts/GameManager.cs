@@ -5,7 +5,8 @@ public class GameManager : Singleton<GameManager>
 {
 	public int coins;
 	public float mana = 10;
-	public int ammoID = 0; 
+	public int ammoID = 0;
+	public bool getSoul = false; 
 
 	private void AmmoSwitch()
 	{
@@ -24,7 +25,7 @@ public class GameManager : Singleton<GameManager>
 	private void FixedUpdate()
 	{
 		AmmoSwitch();
-		if(GameManager.Instance.mana <= 10)
-			GameManager.Instance.mana += 0.02f;
+		if(mana <= 10)
+			mana += 0.02f;
 	}
 }

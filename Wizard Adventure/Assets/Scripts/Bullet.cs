@@ -26,7 +26,7 @@ public class Bullet : MonoBehaviour
 		}
 		else
 		{
-			if(other.gameObject.tag != "MainHero" && other.gameObject.tag != "blast")
+			if(other.gameObject.tag != "MainHero" && other.gameObject.tag != "blast" && other.gameObject.tag != "soul")
 			{
 				SpawnExplosionParticles(explosionEffectPrefab);
 				Destroy(this.gameObject);

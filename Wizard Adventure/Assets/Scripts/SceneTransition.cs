@@ -11,7 +11,7 @@ public class SceneTransition : MonoBehaviour
 	public bool isVertical;
 
 	private Transform _heroPos;
-	private int _offSet = 1;
+	private float _offSet = 1.5f;
 
 	private void LoadPosition()
 	{
