@@ -10,9 +10,14 @@ public class PlayerDeath : MonoBehaviour
 
 	private void Death()
 	{
-		_spawnedAnim = Instantiate(dieAnim, transform.position, Quaternion.identity);
-		Destroy(this.gameObject);
-		deathScreen.SetActive(true);
+		if(GameManager.Instance.canDie && GameManager.Instance.healthPoint <= 0)
+		{
+			_spawnedAnim = Instantiate(dieAnim, transform.position, Quaternion.identity);
+			Destroy(this.gameObject);
+			deathScreen.SetActive(true);
+		}
+		else if(GameManager.Instance.healthPoint >= 1)
+			GameManager.Instance.healthPoint--;
 	}
 
 	private void OnCollisionEnter2D(Collision2D other)

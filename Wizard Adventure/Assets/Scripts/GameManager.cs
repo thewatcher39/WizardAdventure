@@ -4,9 +4,13 @@ using SingletonManager;
 public class GameManager : Singleton<GameManager>
 {
 	public int coins;
-	public float mana = 10;
 	public int ammoID = 0;
-	public bool getSoul = false; 
+	public int currentItemID;
+	public int healthPoint; 
+	public float mana = 10;
+	public float manaRegeneration = 0.02f;
+	public bool getSoul = false;
+	public bool canDie = true;
 
 	private void AmmoSwitch()
 	{
@@ -17,7 +21,7 @@ public class GameManager : Singleton<GameManager>
 		}
 		if(Input.GetKeyDown(KeyCode.E))
 		{
-			if(ammoID != 1)
+			if(ammoID != 2)
 				ammoID++;
 		}
 	}
@@ -26,6 +30,6 @@ public class GameManager : Singleton<GameManager>
 	{
 		AmmoSwitch();
 		if(mana <= 10)
-			mana += 0.02f;
+			mana += manaRegeneration;
 	}
 }

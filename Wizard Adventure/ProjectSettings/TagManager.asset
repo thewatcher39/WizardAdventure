@@ -8,6 +8,7 @@ TagManager:
   - blast
   - enemy
   - soul
+  - boost
   layers:
   - Default
   - TransparentFX
@@ -47,4 +48,7 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 2840845131
+    locked: 0
+  - name: OutOfLight
+    uniqueID: 3187133333
     locked: 0

@@ -6,13 +6,13 @@ public class ApplyDamage : MonoBehaviour
 {
 	public GameObject soulPrefab;
 
-	[SerializeField] private int _healthPoint = 0;
+	[SerializeField] public int _healthPoint = 0;
 	[SerializeField] private int _coinPerKill = 0;
 
-	private void TakeDamage()
+	public void TakeDamage(int damage)
 	{
-		_healthPoint--;
-		if(_healthPoint == 0)
+		_healthPoint -= damage;
+		if(_healthPoint <= 0)
 		{
 			Instantiate(soulPrefab, transform.position, Quaternion.Euler(0,0,Random.Range(0,360)));
 			GameManager.Instance.coins += _coinPerKill;
@@ -23,6 +23,6 @@ public class ApplyDamage : MonoBehaviour
 	private void OnTriggerEnter2D(Collider2D other)
 	{
 		if(other.gameObject.tag == "blast")
-			TakeDamage();
+			TakeDamage(1);
 	}
 }
