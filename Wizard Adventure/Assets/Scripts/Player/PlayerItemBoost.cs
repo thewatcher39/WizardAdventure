@@ -4,18 +4,22 @@ using UnityEngine;
 
 public class PlayerItemBoost : MonoBehaviour
 {
-	public GameObject shield;
+	private Animation _shieldAnimation;
 
-	private void BootleBoost()
+	private int _nullNumber = 39;
+	private bool _isShieldOpen;
+
+	public void BottleBoost()
 	{
-		GameManager.Instance.manaRegeneration = GameManager.Instance.manaRegeneration * 2;
-		GameManager.Instance.currentItemID = 0;
+		GameManager.Instance.manaRegeneration = GameManager.Instance.manaRegeneration * 1.5f;
+		GameManager.Instance.itemID = _nullNumber;
 	}
 
 	private void HeartBoost()
 	{
 		GameManager.Instance.healthPoint += 1;
-		GameManager.Instance.currentItemID = 0;
+		GameManager.Instance.itemID = _nullNumber;
+		print(GameManager.Instance.healthPoint);
 	}
 
 	private void LampBoost()
@@ -26,8 +30,9 @@ public class PlayerItemBoost : MonoBehaviour
 			{
 				if(GameManager.Instance.canDie == false)
 				{
-					shield.SetActive(false);
 					GameManager.Instance.canDie = true;				
+					_shieldAnimation.Play("PlayerShieldOff");
+					_isShieldOpen = false;
 				}
 				else
 					GameManager.Instance.canDie = false;
@@ -35,22 +40,33 @@ public class PlayerItemBoost : MonoBehaviour
 
 			if(GameManager.Instance.canDie == false)
 			{
-				shield.SetActive(true);
+				if(!_isShieldOpen)
+					_shieldAnimation.Play("PlayerShieldOn");
+				_isShieldOpen = true;
 				GameManager.Instance.mana -= 0.1f;
 			}
 		}
 		else
+		{
+			_shieldAnimation.Play("PlayerShieldOff");
+			_isShieldOpen = false;
 			GameManager.Instance.canDie = true;
+		}
 	}
 
+	private void Start()
+	{
+		_shieldAnimation = GetComponentInChildren<Animation>();
+	}
 
 	private void Update()
 	{
-		if(GameManager.Instance.currentItemID == 1)
-			BootleBoost();
-		else if(GameManager.Instance.currentItemID == 2)
+		if(GameManager.Instance.itemID == 0)
+			BottleBoost();
+		else if(GameManager.Instance.itemID == 1)
 			HeartBoost();
-		else if(GameManager.Instance.currentItemID == 3)
+
+		if(GameManager.Instance.isShieldBought)
 			LampBoost();
 	}
 

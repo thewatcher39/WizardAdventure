@@ -15,7 +15,7 @@ public class RayBehaviour : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D other)
 	{
-		if(other.gameObject.tag != "soul" && other.gameObject.tag != "MainHero")
+		if(other.gameObject.tag != "soul" && other.gameObject.tag != "MainHero" && other.gameObject.tag != "MainHero")
 		{
 			Instantiate(rayEffectPrefab, transform.position, Quaternion.identity);
 			Destroy(this.gameObject);

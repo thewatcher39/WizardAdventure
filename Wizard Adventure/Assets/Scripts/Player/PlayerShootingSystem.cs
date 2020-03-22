@@ -29,18 +29,19 @@ public class PlayerShootingSystem : MonoBehaviour
 		if(Input.GetKeyDown(KeyCode.Mouse0) && _canShoot)
 		{
 			if(GameManager.Instance.mana >= 1 && GameManager.Instance.ammoID != 2)
-			{
-				StartCoroutine("coolDown");
-				_bullet = Instantiate(bulletPrefab[GameManager.Instance.ammoID], firePoint.transform.position, firePoint.rotation);
-				_bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.up * _shootPower, ForceMode2D.Impulse);
-				_canShoot = false;
-				GameManager.Instance.mana--;
-			}
+				BallShoot();
 			else if(GameManager.Instance.mana >= 1 && GameManager.Instance.ammoID == 2)
-			{
 				RayShoot();
-			}
 		}
+	}
+
+	private void BallShoot()
+	{
+		StartCoroutine("coolDown");
+		_bullet = Instantiate(bulletPrefab[GameManager.Instance.ammoID], firePoint.transform.position, firePoint.rotation);
+		_bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.up * _shootPower, ForceMode2D.Impulse);
+		_canShoot = false;
+		GameManager.Instance.mana--;
 	}
 
 	private void RayShoot()

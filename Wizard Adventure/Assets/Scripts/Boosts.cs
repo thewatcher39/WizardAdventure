@@ -10,7 +10,7 @@ public class Boosts : MonoBehaviour
 	{
 		if(other.gameObject.tag == "MainHero")
 		{
-			GameManager.Instance.currentItemID = _itemID;
+			GameManager.Instance.itemID = _itemID;
 			Destroy(this.gameObject);
 		}
 	}

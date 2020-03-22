@@ -3,14 +3,17 @@ using SingletonManager;
 
 public class GameManager : Singleton<GameManager>
 {
-	public int coins;
+	public int coins = 999;
 	public int ammoID = 0;
-	public int currentItemID;
+	public int itemID = 20;
 	public int healthPoint; 
 	public float mana = 10;
 	public float manaRegeneration = 0.02f;
+	public bool isShieldBought = false;
 	public bool getSoul = false;
 	public bool canDie = true;
+	public bool[] unlockedAmmoID = new bool[3]; 
+
 
 	private void AmmoSwitch()
 	{
@@ -21,9 +24,14 @@ public class GameManager : Singleton<GameManager>
 		}
 		if(Input.GetKeyDown(KeyCode.E))
 		{
-			if(ammoID != 2)
+			if(ammoID != 2 && unlockedAmmoID[ammoID + 1])
 				ammoID++;
 		}
+	}
+
+	private void Start()
+	{
+		unlockedAmmoID[0] = true;
 	}
 
 	private void FixedUpdate()
